@@ -8,6 +8,7 @@ import cucumber.api.scala.ScalaDsl
 import org.openqa.selenium.remote.DesiredCapabilities
 import com.saucelabs.selenium.client.factory.SeleniumFactory
 import scala.util.Properties
+import java.util
 
 
 trait Browser {
@@ -51,6 +52,10 @@ class TestAnwendungInitialisierer {
 
   def initAnwendung = {
     System.getProperties.list(System.out)
+
+    import scala.collection.JavaConverters._
+
+    println(System.getenv().asScala.toString())
 
     val startUrl = Properties.envOrNone("SELENIUM_URL")
 
