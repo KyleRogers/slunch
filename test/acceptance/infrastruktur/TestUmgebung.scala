@@ -6,6 +6,8 @@ import play.api.test.TestServer
 import play.api.test.FakeApplication
 import cucumber.api.scala.ScalaDsl
 import org.openqa.selenium.firefox.FirefoxDriver
+import org.openqa.selenium.remote.DesiredCapabilities
+import com.saucelabs.selenium.client.factory.SeleniumFactory
 
 
 trait Browser {
@@ -37,7 +39,9 @@ case class Anwendung(url: String)
 class LocalFirefoxInitialisierer {
   val webDriver: Class[FirefoxDriver] = Helpers.FIREFOX
 
-  def initBrowser = TestBrowser.of(webDriver, Some(TestUmgebung.anwendung.url))
+  def initBrowser = new TestBrowser(
+    SeleniumFactory.createWebDriver(DesiredCapabilities.firefox()),
+    Some(TestUmgebung.anwendung.url))
 }
 
 class FakeAnwendungInitialisierer {
