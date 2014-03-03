@@ -6,6 +6,8 @@ version := "1.0-SNAPSHOT"
 
 resolvers += "Cloudbees Repository" at "http://repository-saucelabs.forge.cloudbees.com/release/"
 
+checksums in update := Nil
+
 libraryDependencies ++= Seq(
   "org.webjars" %% "webjars-play" % "2.2.0",
   "org.webjars" % "bootstrap" % "2.3.1"
