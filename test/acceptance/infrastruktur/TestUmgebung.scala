@@ -50,6 +50,8 @@ class TestAnwendungInitialisierer {
   private val applicationPort: Int = Helpers.testServerPort
 
   def initAnwendung = {
+    System.getProperties.list(System.out)
+
     val startUrl = Properties.envOrNone("SELENIUM_URL")
 
     new Anwendung(startUrl.getOrElse(initLokal()))
